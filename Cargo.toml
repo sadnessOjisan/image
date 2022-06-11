@@ -1,12 +1,12 @@
 [package]
-name = "image"
+name = "@sadnessOjian/image"
 version = "0.24.2"
 edition = "2018"
 rust-version = "1.56"
 resolver = "2"
 
 license = "MIT"
-description = "Imaging library written in Rust. Provides basic filters and decoders for the most common image formats."
+description = "image crate の改造版。buffer 列から画像を作れるようにした。"
 authors = ["The image-rs Developers"]
 readme = "README.md"
 
