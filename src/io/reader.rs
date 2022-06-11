@@ -155,6 +155,15 @@ impl Reader<BufReader<File>> {
             limits: super::Limits::default(),
         })
     }
+
+    /// Create Reader from buffer
+    pub fn open_from_buf(buf: BufReader<File>, ext: Option<ImageFormat>) -> io::Result<Self> {
+        Ok(Reader {
+            inner: buf,
+            format: ext,
+            limits: super::Limits::default(),
+        })
+    }
 }
 
 impl<R: BufRead + Seek> Reader<R> {
