@@ -1,5 +1,5 @@
 [package]
-name = "@sadnessOjian/image"
+name = "image"
 version = "0.24.2"
 edition = "2018"
 rust-version = "1.56"

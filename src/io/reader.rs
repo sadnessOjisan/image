@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{self, BufRead, BufReader, Cursor, Read, Seek, SeekFrom};
+use std::io::{self, BufRead, BufReader, Bytes, Cursor, Read, Seek, SeekFrom};
 use std::path::Path;
 
 use crate::dynimage::DynamicImage;
@@ -129,6 +129,17 @@ impl<R: Read> Reader<R> {
     /// Unwrap the reader.
     pub fn into_inner(self) -> R {
         self.inner
+    }
+
+    pub fn open_from_raw_buf(buf: Vec<u8>, ext: Option<ImageFormat>) -> io::Result<Self> {
+        fn f(input: &mut Read, ext: Option<ImageFormat>) -> Reader<R> {
+            Reader {
+                inner: input,
+                format: ext,
+                limits: super::Limits::default(),
+            }
+        }
+        Ok(f(&mut &buf[..], ext))
     }
 }
 
